@@ -3,7 +3,7 @@ from game.casting.actor import Actor
 from game.casting.point import Point
 
 
-class Racket(Actor):
+class Racket2(Actor):
     """A implement used to hit and bounce the ball in the game."""
     
     def __init__(self, body, animation, debug = False):

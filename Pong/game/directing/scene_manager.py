@@ -3,11 +3,11 @@ from constants import *
 from game.casting.animation import Animation
 from game.casting.ball import Ball
 from game.casting.body import Body
-from game.casting.brick import Brick
+# from game.casting.brick import Brick
 from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.point import Point
-from game.casting.racket import Racket
+from game.casting.racket1 import Racket1
 from game.casting.stats import Stats
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
@@ -17,7 +17,7 @@ from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_racket_action import CollideRacketAction
 from game.scripting.control_racket_action import ControlRacketAction
 from game.scripting.draw_ball_action import DrawBallAction
-from game.scripting.draw_bricks_action import DrawBricksAction
+# from game.scripting.draw_bricks_action import DrawBricksAction
 from game.scripting.draw_dialog_action import DrawDialogAction
 from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_racket_action import DrawRacketAction
@@ -47,11 +47,11 @@ class SceneManager:
 
     CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
+    # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
     DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
-    DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
+    # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
     DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
@@ -89,7 +89,7 @@ class SceneManager:
         self._add_lives(cast)
         self._add_score(cast)
         self._add_ball(cast)
-        self._add_bricks(cast)
+        # self._add_bricks(cast)
         self._add_racket(cast)
         self._add_dialog(cast, ENTER_TO_START)
 
@@ -103,7 +103,7 @@ class SceneManager:
         
     def _prepare_next_level(self, cast, script):
         self._add_ball(cast)
-        self._add_bricks(cast)
+        # self._add_bricks(cast)
         self._add_racket(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
 
@@ -161,38 +161,38 @@ class SceneManager:
         ball = Ball(body, image, True)
         cast.add_actor(BALL_GROUP, ball)
 
-    def _add_bricks(self, cast):
-        cast.clear_actors(BRICK_GROUP)
+    # def _add_bricks(self, cast):
+    #     cast.clear_actors(BRICK_GROUP)
         
-        stats = cast.get_first_actor(STATS_GROUP)
-        level = stats.get_level() % BASE_LEVELS
-        filename = LEVEL_FILE.format(level)
+    #     stats = cast.get_first_actor(STATS_GROUP)
+    #     level = stats.get_level() % BASE_LEVELS
+    #     filename = LEVEL_FILE.format(level)
 
-        with open(filename, 'r') as file:
-            reader = csv.reader(file, skipinitialspace=True)
+        # with open(filename, 'r') as file:
+        #     reader = csv.reader(file, skipinitialspace=True)
 
-            for r, row in enumerate(reader):
-                for c, column in enumerate(row):
+        #     for r, row in enumerate(reader):
+        #         for c, column in enumerate(row):
 
-                    x = FIELD_LEFT + c * BRICK_WIDTH
-                    y = FIELD_TOP + r * BRICK_HEIGHT
-                    color = column[0]
-                    frames = int(column[1])
-                    points = BRICK_POINTS 
+        #             x = FIELD_LEFT + c * BRICK_WIDTH
+        #             y = FIELD_TOP + r * BRICK_HEIGHT
+        #             color = column[0]
+        #             frames = int(column[1])
+        #             points = BRICK_POINTS 
                     
-                    if frames == 1:
-                        points *= 2
+        #             if frames == 1:
+        #                 points *= 2
                     
-                    position = Point(x, y)
-                    size = Point(BRICK_WIDTH, BRICK_HEIGHT)
-                    velocity = Point(0, 0)
-                    images = BRICK_IMAGES[color][0:frames]
+        #             position = Point(x, y)
+        #             size = Point(BRICK_WIDTH, BRICK_HEIGHT)
+        #             velocity = Point(0, 0)
+        #             images = BRICK_IMAGES[color][0:frames]
 
-                    body = Body(position, size, velocity)
-                    animation = Animation(images, BRICK_RATE, BRICK_DELAY)
+        #             body = Body(position, size, velocity)
+        #             animation = Animation(images, BRICK_RATE, BRICK_DELAY)
 
-                    brick = Brick(body, animation, points)
-                    cast.add_actor(BRICK_GROUP, brick)
+        #             brick = Brick(body, animation, points)
+        #             cast.add_actor(BRICK_GROUP, brick)
 
     def _add_dialog(self, cast, message):
         cast.clear_actors(DIALOG_GROUP)
@@ -236,7 +236,7 @@ class SceneManager:
         velocity = Point(0, 0)
         body = Body(position, size, velocity)
         animation = Animation(RACKET_IMAGES, RACKET_RATE)
-        racket = Racket(body, animation)
+        racket = Racket1(body, animation)
         cast.add_actor(RACKET_GROUP, racket)
 
     # ----------------------------------------------------------------------------------------------
@@ -255,7 +255,7 @@ class SceneManager:
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
-        script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
+        # script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
         script.add_action(OUTPUT, self.END_DRAWING_ACTION)
@@ -273,7 +273,7 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_BALL_ACTION)
         script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
-        script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
+        # script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.CHECK_OVER_ACTION)

@@ -98,7 +98,7 @@ BALL_HEIGHT = 28
 BALL_VELOCITY = 6
 
 # RACKET
-RACKET_GROUP = "rackets"
+RACKET_GROUP = "rackets1"
 RACKET_IMAGES = [f"pong/assets/images/{n:03}.png" for n in range(100, 103)]
 RACKET_WIDTH = 106
 RACKET_HEIGHT = 28
@@ -106,18 +106,18 @@ RACKET_RATE = 6
 RACKET_VELOCITY = 7
 
 # BRICK
-BRICK_GROUP = "bricks"
-BRICK_IMAGES = {
-    "b": [f"pong/assets/images/{i:03}.png" for i in range(10,19)],
-    "g": [f"pong/assets/images/{i:03}.png" for i in range(20,29)],
-    "p": [f"pong/assets/images/{i:03}.png" for i in range(30,39)],
-    "y": [f"pong/assets/images/{i:03}.png" for i in range(40,49)]
-}
-BRICK_WIDTH = 80
-BRICK_HEIGHT = 28
-BRICK_DELAY = 0.5
-BRICK_RATE = 4
-BRICK_POINTS = 50
+# BRICK_GROUP = "bricks"
+# BRICK_IMAGES = {
+#     "b": [f"pong/assets/images/{i:03}.png" for i in range(10,19)],
+#     "g": [f"pong/assets/images/{i:03}.png" for i in range(20,29)],
+#     "p": [f"pong/assets/images/{i:03}.png" for i in range(30,39)],
+#     "y": [f"pong/assets/images/{i:03}.png" for i in range(40,49)]
+# }
+# BRICK_WIDTH = 80
+# BRICK_HEIGHT = 28
+# BRICK_DELAY = 0.5
+# BRICK_RATE = 4
+# BRICK_POINTS = 50
 
 # DIALOG
 DIALOG_GROUP = "dialogs"
