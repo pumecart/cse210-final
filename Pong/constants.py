@@ -47,6 +47,8 @@ RIGHT = "right"
 SPACE = "space"
 ENTER = "enter"
 PAUSE = "p"
+UP = "up"
+DOWN = "down"
 
 # SCENES
 NEW_GAME = 0
