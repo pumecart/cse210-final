@@ -111,6 +111,7 @@ class SceneManager:
         script.add_action(INPUT, TimedChangeSceneAction(IN_PLAY, 2))
         self._add_output_script(script)
         script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, WELCOME_SOUND))
+        script.add_action(OUTPUT, PlaySoundAction(self.AUDIO_SERVICE, MUSIC_SOUND))
         
     def _prepare_try_again(self, cast, script):
         self._add_ball(cast)
