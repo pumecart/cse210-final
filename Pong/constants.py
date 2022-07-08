@@ -86,16 +86,18 @@ MAXIMUM_LIVES = 5
 
 # HUD
 HUD_MARGIN = 15
-LEVEL_GROUP = "level"
-LIVES_GROUP = "lives"
-SCORE_GROUP = "score"
-LEVEL_FORMAT = "LEVEL: {}"
-LIVES_FORMAT = "LIVES: {}"
-SCORE_FORMAT = "SCORE: {}"
+# LEVEL_GROUP = "level"
+# LIVES_GROUP = "lives"
+SCORE_GROUP1 = "score1"
+SCORE_GROUP2 = "score2"
+# LEVEL_FORMAT = "LEVEL: {}"
+# LIVES_FORMAT = "LIVES: {}"
+SCORE_FORMAT_RACKET1 = "SCORE 1: {}"
+SCORE_FORMAT_RACKET2 = "SCORE 2: {}"
 
 # BALL
 BALL_GROUP = "balls"
-BALL_IMAGE = "pong/assets/images/000.png"
+BALL_IMAGE = "pong/assets/images/001.png"
 BALL_WIDTH = 28
 BALL_HEIGHT = 28
 BALL_VELOCITY = 6

@@ -8,7 +8,8 @@ from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.point import Point
 from game.casting.racket1 import Racket1
-from game.casting.stats import Stats
+from game.casting.stats_racket1 import Stats_Racket1
+from game.casting.stats_racket2 import Stats_Racket2
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.check_over_action import CheckOverAction
@@ -84,10 +85,12 @@ class SceneManager:
     # ----------------------------------------------------------------------------------------------
     
     def _prepare_new_game(self, cast, script):
-        self._add_stats(cast)
-        self._add_level(cast)
-        self._add_lives(cast)
-        self._add_score(cast)
+        self._add_stats_racket1(cast)
+        # self._add_stats_racket2(cast)
+        # self._add_level(cast)
+        # self._add_lives(cast)
+        self._add_score_racket1(cast)
+        self._add_score_racket2(cast)
         self._add_ball(cast)
         # self._add_bricks(cast)
         self._add_racket(cast)
@@ -202,30 +205,43 @@ class SceneManager:
         label = Label(text, position)
         cast.add_actor(DIALOG_GROUP, label)
 
-    def _add_level(self, cast):
-        cast.clear_actors(LEVEL_GROUP)
-        text = Text(LEVEL_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
-        position = Point(HUD_MARGIN, HUD_MARGIN)
-        label = Label(text, position)
-        cast.add_actor(LEVEL_GROUP, label)
+    # def _add_level(self, cast):
+    #     cast.clear_actors(LEVEL_GROUP)
+    #     text = Text(LEVEL_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
+    #     position = Point(HUD_MARGIN, HUD_MARGIN)
+    #     label = Label(text, position)
+    #     cast.add_actor(LEVEL_GROUP, label)
 
-    def _add_lives(self, cast):
-        cast.clear_actors(LIVES_GROUP)
-        text = Text(LIVES_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
+    # def _add_lives(self, cast):
+    #     cast.clear_actors(LIVES_GROUP)
+    #     text = Text(LIVES_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
+    #     position = Point(SCREEN_WIDTH - HUD_MARGIN, HUD_MARGIN)
+    #     label = Label(text, position)
+    #     cast.add_actor(LIVES_GROUP, label)
+
+    def _add_score_racket1(self, cast):
+        cast.clear_actors(SCORE_GROUP1)
+        text = Text(SCORE_FORMAT_RACKET1, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
+        # position = Point(CENTER_X, HUD_MARGIN)
+        position = Point(0 + HUD_MARGIN, HUD_MARGIN)
+        label1 = Label(text, position)
+        cast.add_actor(SCORE_GROUP1, label1)
+
+    def _add_score_racket2(self, cast):
+        cast.clear_actors(SCORE_GROUP2)
+        text = Text(SCORE_FORMAT_RACKET2, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
         position = Point(SCREEN_WIDTH - HUD_MARGIN, HUD_MARGIN)
-        label = Label(text, position)
-        cast.add_actor(LIVES_GROUP, label)
+        label2 = Label(text, position)
+        cast.add_actor(SCORE_GROUP2, label2)
 
-    def _add_score(self, cast):
-        cast.clear_actors(SCORE_GROUP)
-        text = Text(SCORE_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
-        position = Point(CENTER_X, HUD_MARGIN)
-        label = Label(text, position)
-        cast.add_actor(SCORE_GROUP, label)
-
-    def _add_stats(self, cast):
+    def _add_stats_racket1(self, cast):
         cast.clear_actors(STATS_GROUP)
-        stats = Stats()
+        stats = Stats_Racket1()
+        cast.add_actor(STATS_GROUP, stats)
+
+    def _add_stats_racket2(self, cast):
+        cast.clear_actors(STATS_GROUP)
+        stats = Stats_Racket2()
         cast.add_actor(STATS_GROUP, stats)
 
     def _add_racket(self, cast):
