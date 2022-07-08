@@ -30,7 +30,7 @@ FONT_LARGE = 48
 BOUNCE_SOUND = "pong/assets/sounds/boing.wav"
 WELCOME_SOUND = "pong/assets/sounds/start.wav"
 OVER_SOUND = "pong/assets/sounds/over.wav"
-MUSIC_SOUND = "pong/assets/sounds/song1.mp3"
+MUSIC_SOUND = "pong/assets/sounds/Song1.mp3"
 
 # TEXT
 ALIGN_CENTER = 0
