@@ -220,19 +220,19 @@ class SceneManager:
     #     cast.add_actor(LIVES_GROUP, label)
 
     def _add_score_racket1(self, cast):
-        cast.clear_actors(SCORE_GROUP)
+        cast.clear_actors(SCORE_GROUP1)
         text = Text(SCORE_FORMAT_RACKET1, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
         # position = Point(CENTER_X, HUD_MARGIN)
-        position = Point(HUD_MARGIN, HUD_MARGIN)
-        label = Label(text, position)
-        cast.add_actor(SCORE_GROUP, label)
+        position = Point(0 + HUD_MARGIN, HUD_MARGIN)
+        label1 = Label(text, position)
+        cast.add_actor(SCORE_GROUP1, label1)
 
     def _add_score_racket2(self, cast):
-        cast.clear_actors(SCORE_GROUP)
+        cast.clear_actors(SCORE_GROUP2)
         text = Text(SCORE_FORMAT_RACKET2, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
         position = Point(SCREEN_WIDTH - HUD_MARGIN, HUD_MARGIN)
-        label = Label(text, position)
-        cast.add_actor(SCORE_GROUP, label)
+        label2 = Label(text, position)
+        cast.add_actor(SCORE_GROUP2, label2)
 
     def _add_stats_racket1(self, cast):
         cast.clear_actors(STATS_GROUP)
