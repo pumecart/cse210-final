@@ -97,7 +97,7 @@ SCORE_FORMAT_RACKET2 = "SCORE 2: {}"
 
 # BALL
 BALL_GROUP = "balls"
-BALL_IMAGE = "pong/assets/images/000.png"
+BALL_IMAGE = "pong/assets/images/001.png"
 BALL_WIDTH = 28
 BALL_HEIGHT = 28
 BALL_VELOCITY = 6
