@@ -86,7 +86,7 @@ class SceneManager:
     
     def _prepare_new_game(self, cast, script):
         self._add_stats_racket1(cast)
-        # self._add_stats_racket2(cast)
+        self._add_stats_racket2(cast)
         # self._add_level(cast)
         # self._add_lives(cast)
         self._add_score_racket1(cast)
@@ -235,14 +235,14 @@ class SceneManager:
         cast.add_actor(SCORE_GROUP2, label2)
 
     def _add_stats_racket1(self, cast):
-        cast.clear_actors(STATS_GROUP)
+        cast.clear_actors(STATS_GROUP1)
         stats = Stats_Racket1()
-        cast.add_actor(STATS_GROUP, stats)
+        cast.add_actor(STATS_GROUP1, stats)
 
     def _add_stats_racket2(self, cast):
-        cast.clear_actors(STATS_GROUP)
+        cast.clear_actors(STATS_GROUP2)
         stats = Stats_Racket2()
-        cast.add_actor(STATS_GROUP, stats)
+        cast.add_actor(STATS_GROUP2, stats)
 
     def _add_racket(self, cast):
         cast.clear_actors(RACKET_GROUP)

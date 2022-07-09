@@ -80,7 +80,8 @@ RELEASE = 6
 # -------------------------------------------------------------------------------------------------- 
 
 # STATS
-STATS_GROUP = "stats"
+STATS_GROUP1 = "stats1"
+STATS_GROUP2 = "stats2"
 DEFAULT_LIVES = 3
 MAXIMUM_LIVES = 5
 
