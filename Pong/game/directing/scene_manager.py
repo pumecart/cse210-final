@@ -14,7 +14,7 @@ from game.casting.text import Text
 from game.scripting.change_scene_action import ChangeSceneAction
 # from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_borders_action import CollideBordersAction
-from game.scripting.collide_brick_action import CollideBrickAction
+# from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_racket_action import CollideRacketAction
 from game.scripting.control_racket_action import ControlRacketAction
 from game.scripting.draw_ball_action import DrawBallAction
