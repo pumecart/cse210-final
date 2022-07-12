@@ -50,6 +50,10 @@ ENTER = "enter"
 PAUSE = "p"
 UP = "up"
 DOWN = "down"
+S = "s"
+W = "w"
+I = "i"
+K = "k"
 
 # SCENES
 NEW_GAME = 0
@@ -104,7 +108,8 @@ BALL_HEIGHT = 28
 BALL_VELOCITY = 6
 
 # RACKET
-RACKET_GROUP = "rackets1"
+RACKET_GROUP_LEFT = "racketLeft"
+RACKET_GROUP_RIGHT = "racketRight"
 RACKET_IMAGES = [f"pong/assets/images/{n:03}.png" for n in range(300, 310)]
 RACKET_IMAGES2 = [f"pong/assets/images/{n:03}.png" for n in range(320, 330)]
 RACKET_WIDTH = 28 #106

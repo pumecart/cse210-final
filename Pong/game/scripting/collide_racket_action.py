@@ -11,10 +11,10 @@ class CollideRacketAction(Action):
         
     def execute(self, cast, script, callback):
         ball = cast.get_first_actor(BALL_GROUP)
-        racket = cast.get_first_actor(RACKET_GROUP)
+        racketLeft = cast.get_first_actor(RACKET_GROUP_LEFT)
         
         ball_body = ball.get_body()
-        racket_body = racket.get_body()
+        racket_body = racketLeft.get_body()
 
         if self._physics_service.has_collided(ball_body, racket_body):
             ball.bounce_y()

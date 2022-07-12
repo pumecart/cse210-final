@@ -8,14 +8,23 @@ class ControlRacketAction(Action):
         self._keyboard_service = keyboard_service
         
     def execute(self, cast, script, callback):
-        racket1 = cast.get_first_actor(RACKET_GROUP)
-        if self._keyboard_service.is_key_down(UP): 
-            racket1.swing_up()
-        elif self._keyboard_service.is_key_down(DOWN): 
-            racket1.swing_down()
+        racketLeft = cast.get_first_actor(RACKET_GROUP_LEFT)
+        racketRight = cast.get_first_actor(RACKET_GROUP_RIGHT)
+        if self._keyboard_service.is_key_down(W): 
+            racketLeft.swing_up()
+        elif self._keyboard_service.is_key_down(S): 
+            racketLeft.swing_down()
+        elif self._keyboard_service.is_key_down(I): 
+            racketRight.swing_up()
+        elif self._keyboard_service.is_key_down(K): 
+            racketRight.swing_down()
         else: 
-            racket1.stop_moving()
-        # if self._keyboard_service.is_key_down(LEFT):
-        #     racket1.swing_left()
-        # elif self._keyboard_service.is_key_down(RIGHT): 
-        #     racket1.swing_right()        
+            racketLeft.stop_moving()
+            racketRight.stop_moving()
+
+        
+        
+        
+   
+            
+           

@@ -3,7 +3,7 @@ from game.casting.actor import Actor
 from game.casting.point import Point
 
 
-class Racket1(Actor):
+class RacketLeft(Actor):
     """A implement used to hit and bounce the ball in the game."""
     
     def __init__(self, body, animation, debug = False):
@@ -17,6 +17,7 @@ class Racket1(Actor):
         super().__init__(debug)
         self._body = body
         self._animation = animation
+        self._body.set_position(Point(25, (SCREEN_HEIGHT/2)))
 
     def get_animation(self):
         """Gets the bat's animation.

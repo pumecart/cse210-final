@@ -9,8 +9,8 @@ class MoveRacketAction(Action):
         pass
 
     def execute(self, cast, script, callback):
-        racket1 = cast.get_first_actor(RACKET_GROUP)
-        body = racket1.get_body()
+        racketLeft = cast.get_first_actor(RACKET_GROUP_LEFT)
+        body = racketLeft.get_body()
         velocity = body.get_velocity()
         position = body.get_position()
         # x = position.get_x()
@@ -29,3 +29,22 @@ class MoveRacketAction(Action):
             
         body.set_position(position)
         
+        racketRight = cast.get_first_actor(RACKET_GROUP_RIGHT)
+        bodyR = racketRight.get_body()
+        velocityR = bodyR.get_velocity()
+        positionR = bodyR.get_position()
+        # x = position.get_x()
+        yR = positionR.get_y()
+        
+        positionR = positionR.add(velocityR)
+
+        # if x < 0:
+        #     position = Point(0, position.get_y())
+        # elif x > (SCREEN_WIDTH - RACKET_WIDTH):
+        #     position = Point(SCREEN_WIDTH - RACKET_WIDTH, position.get_y())
+        if yR < 0:
+            positionR = Point(positionR.get_x(), 0)
+        elif yR > (SCREEN_HEIGHT - RACKET_HEIGHT):
+             position = Point(positionR.get_x(), SCREEN_HEIGHT - RACKET_HEIGHT)
+            
+        bodyR.set_position(positionR)
