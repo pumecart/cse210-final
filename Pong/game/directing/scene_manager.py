@@ -150,7 +150,7 @@ class SceneManager:
         self._add_output_script(script)
 
     # ----------------------------------------------------------------------------------------------
-    # casting methods
+    # Casting Methods
     # ----------------------------------------------------------------------------------------------
     
     def _activate_ball(self, cast):
@@ -169,59 +169,12 @@ class SceneManager:
         ball = Ball(body, image, True)
         cast.add_actor(BALL_GROUP, ball)
 
-    # def _add_bricks(self, cast):
-    #     cast.clear_actors(BRICK_GROUP)
-        
-    #     stats = cast.get_first_actor(STATS_GROUP)
-    #     level = stats.get_level() % BASE_LEVELS
-    #     filename = LEVEL_FILE.format(level)
-
-        # with open(filename, 'r') as file:
-        #     reader = csv.reader(file, skipinitialspace=True)
-
-        #     for r, row in enumerate(reader):
-        #         for c, column in enumerate(row):
-
-        #             x = FIELD_LEFT + c * BRICK_WIDTH
-        #             y = FIELD_TOP + r * BRICK_HEIGHT
-        #             color = column[0]
-        #             frames = int(column[1])
-        #             points = BRICK_POINTS 
-                    
-        #             if frames == 1:
-        #                 points *= 2
-                    
-        #             position = Point(x, y)
-        #             size = Point(BRICK_WIDTH, BRICK_HEIGHT)
-        #             velocity = Point(0, 0)
-        #             images = BRICK_IMAGES[color][0:frames]
-
-        #             body = Body(position, size, velocity)
-        #             animation = Animation(images, BRICK_RATE, BRICK_DELAY)
-
-        #             brick = Brick(body, animation, points)
-        #             cast.add_actor(BRICK_GROUP, brick)
-
     def _add_dialog(self, cast, message):
         cast.clear_actors(DIALOG_GROUP)
         text = Text(message, FONT_FILE, FONT_SMALL, ALIGN_CENTER)
         position = Point(CENTER_X, CENTER_Y)
         label = Label(text, position)
         cast.add_actor(DIALOG_GROUP, label)
-
-    # def _add_level(self, cast):
-    #     cast.clear_actors(LEVEL_GROUP)
-    #     text = Text(LEVEL_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
-    #     position = Point(HUD_MARGIN, HUD_MARGIN)
-    #     label = Label(text, position)
-    #     cast.add_actor(LEVEL_GROUP, label)
-
-    # def _add_lives(self, cast):
-    #     cast.clear_actors(LIVES_GROUP)
-    #     text = Text(LIVES_FORMAT, FONT_FILE, FONT_SMALL, ALIGN_RIGHT)
-    #     position = Point(SCREEN_WIDTH - HUD_MARGIN, HUD_MARGIN)
-    #     label = Label(text, position)
-    #     cast.add_actor(LIVES_GROUP, label)
 
     def _add_score_racket1(self, cast):
         cast.clear_actors(SCORE_GROUP1)
@@ -268,13 +221,13 @@ class SceneManager:
         size = Point(RACKET_WIDTH, RACKET_HEIGHT)
         velocity = Point(0, 0)
         body = Body(position, size, velocity)
-        animation = Animation(RACKET_IMAGES, RACKET_RATE)
+        animation = Animation(RACKET_IMAGES2, RACKET_RATE)
         racket = RacketRight(body, animation)
         cast.add_actor(RACKET_GROUP_RIGHT, racket)
         
 
     # ----------------------------------------------------------------------------------------------
-    # scripting methods
+    # Scripting Methods
     # ----------------------------------------------------------------------------------------------
     def _add_initialize_script(self, script):
         script.clear_actions(INITIALIZE)
@@ -289,7 +242,6 @@ class SceneManager:
         script.add_action(OUTPUT, self.START_DRAWING_ACTION)
         script.add_action(OUTPUT, self.DRAW_HUD_ACTION)
         script.add_action(OUTPUT, self.DRAW_BALL_ACTION)
-        # script.add_action(OUTPUT, self.DRAW_BRICKS_ACTION)
         script.add_action(OUTPUT, self.DRAW_RACKET_ACTION)
         script.add_action(OUTPUT, self.DRAW_DIALOG_ACTION)
         script.add_action(OUTPUT, self.END_DRAWING_ACTION)
@@ -307,7 +259,5 @@ class SceneManager:
         script.add_action(UPDATE, self.MOVE_BALL_ACTION)
         script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
         script.add_action(UPDATE, self.COLLIDE_BORDERS_ACTION)
-        # script.add_action(UPDATE, self.COLLIDE_BRICKS_ACTION)
         script.add_action(UPDATE, self.COLLIDE_RACKET_ACTION)
         script.add_action(UPDATE, self.MOVE_RACKET_ACTION)
-        # script.add_action(UPDATE, self.CHECK_OVER_ACTION)
