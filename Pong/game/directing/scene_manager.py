@@ -78,8 +78,10 @@ class SceneManager:
             self._prepare_try_again(cast, script)
         elif scene == IN_PLAY:
             self._prepare_in_play(cast, script)
-        elif scene == GAME_OVER:    
-            self._prepare_game_over(cast, script)
+        elif scene == GAME_OVERL:    
+            self._prepare_game_overL(cast, script)
+        elif scene == GAME_OVERR:    
+            self._prepare_game_overR(cast, script)
     
     # ----------------------------------------------------------------------------------------------
     # scene methods
@@ -139,10 +141,20 @@ class SceneManager:
         self._add_update_script(script)
         self._add_output_script(script)
 
-    def _prepare_game_over(self, cast, script):
+    def _prepare_game_overL(self, cast, script):
         self._add_ball(cast)
-        self._left(cast)
-        self._add_dialog(cast, WAS_GOOD_GAME)
+        #self._left(cast)
+        self._add_dialog(cast, WAS_GOOD_GAMEL)
+
+        script.clear_actions(INPUT)
+        script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))
+        script.clear_actions(UPDATE)
+        self._add_output_script(script)
+    
+    def _prepare_game_overR(self, cast, script):
+        self._add_ball(cast)
+        #self._left(cast)
+        self._add_dialog(cast, WAS_GOOD_GAMER)
 
         script.clear_actions(INPUT)
         script.add_action(INPUT, TimedChangeSceneAction(NEW_GAME, 5))

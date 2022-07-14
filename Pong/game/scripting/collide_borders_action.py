@@ -21,16 +21,24 @@ class CollideBordersAction(Action):
         if x < FIELD_LEFT:
             ball.bounce_x()
             self._audio_service.play_sound(bounce_sound)
-            callback.on_next(TRY_AGAIN)
             stats = cast.get_first_actor(STATS_GROUP2)
-            stats.add_points(1)
+            if stats.get_score() <= 5:
+                callback.on_next(TRY_AGAIN) 
+                stats.add_points(1)
+            else:
+                callback.on_next(GAME_OVERL)
+                self._audio_service.play_sound(over_sound)
 
         elif x >= (FIELD_RIGHT - BALL_WIDTH):
             ball.bounce_x()
             self._audio_service.play_sound(bounce_sound)
-            callback.on_next(TRY_AGAIN)
             stats = cast.get_first_actor(STATS_GROUP1)
-            stats.add_points(1)
+            if stats.get_score() <= 5:
+                callback.on_next(TRY_AGAIN) 
+                stats.add_points(1)
+            else:
+                callback.on_next(GAME_OVERR)
+                self._audio_service.play_sound(over_sound)
 
         if y < FIELD_TOP:
             ball.bounce_y()
