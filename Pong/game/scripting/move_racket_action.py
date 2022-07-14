@@ -9,42 +9,34 @@ class MoveRacketAction(Action):
         pass
 
     def execute(self, cast, script, callback):
+        # Movement for the left racket
         racketLeft = cast.get_first_actor(RACKET_GROUP_LEFT)
         body = racketLeft.get_body()
         velocity = body.get_velocity()
         position = body.get_position()
-        # x = position.get_x()
         y = position.get_y()
         
         position = position.add(velocity)
 
-        # if x < 0:
-        #     position = Point(0, position.get_y())
-        # elif x > (SCREEN_WIDTH - RACKET_WIDTH):
-        #     position = Point(SCREEN_WIDTH - RACKET_WIDTH, position.get_y())
-        if y < 0:
-            position = Point(position.get_x(), 0)
+        if y < 50:
+            position = Point(position.get_x(), 50)
         elif y > (SCREEN_HEIGHT - RACKET_HEIGHT):
              position = Point(position.get_x(), SCREEN_HEIGHT - RACKET_HEIGHT)
             
         body.set_position(position)
         
+        # Movement for the right racket
         racketRight = cast.get_first_actor(RACKET_GROUP_RIGHT)
-        bodyR = racketRight.get_body()
-        velocityR = bodyR.get_velocity()
-        positionR = bodyR.get_position()
-        # x = position.get_x()
-        yR = positionR.get_y()
+        bodyRight = racketRight.get_body()
+        velocityR = bodyRight.get_velocity()
+        positionRight = bodyRight.get_position()
+        yRight = positionRight.get_y()
         
-        positionR = positionR.add(velocityR)
+        positionRight = positionRight.add(velocityR)
 
-        # if x < 0:
-        #     position = Point(0, position.get_y())
-        # elif x > (SCREEN_WIDTH - RACKET_WIDTH):
-        #     position = Point(SCREEN_WIDTH - RACKET_WIDTH, position.get_y())
-        if yR < 0:
-            positionR = Point(positionR.get_x(), 0)
-        elif yR > (SCREEN_HEIGHT - RACKET_HEIGHT):
-             position = Point(positionR.get_x(), SCREEN_HEIGHT - RACKET_HEIGHT)
+        if yRight < 50:
+            positionRight = Point(positionRight.get_x(), 50)
+        elif yRight > (SCREEN_HEIGHT - RACKET_HEIGHT):
+             positionRight = Point(positionRight.get_x(), SCREEN_HEIGHT - RACKET_HEIGHT)
             
-        bodyR.set_position(positionR)
+        bodyRight.set_position(positionRight)
