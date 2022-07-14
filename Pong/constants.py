@@ -112,10 +112,10 @@ RACKET_GROUP_LEFT = "racketLeft"
 RACKET_GROUP_RIGHT = "racketRight"
 RACKET_IMAGES = [f"pong/assets/images/{n:03}.png" for n in range(300, 310)]
 RACKET_IMAGES2 = [f"pong/assets/images/{n:03}.png" for n in range(320, 330)]
-RACKET_WIDTH = 28 #106
-RACKET_HEIGHT = 106 #28
-RACKET_RATE = 10 #6
-RACKET_VELOCITY = 7
+RACKET_WIDTH = 28 
+RACKET_HEIGHT = 106 
+RACKET_RATE = 10 
+RACKET_VELOCITY = 9
 
 # BRICK
 # BRICK_GROUP = "bricks"

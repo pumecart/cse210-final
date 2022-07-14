@@ -23,7 +23,10 @@ class Ball(Actor):
         """Bounces the ball in the x direction."""
         velocity = self._body.get_velocity()
         rn = random.uniform(0.9, 1.1)
-        vx = velocity.get_x() * rn * -1
+        if velocity.get_x() < 0:
+            vx = velocity.get_x() * rn * -1 + .75
+        else:
+            vx = velocity.get_x() * rn * -1 - .75
         vy = velocity.get_y()
         velocity = Point(vx, vy)
         self._body.set_velocity(velocity)
