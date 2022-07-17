@@ -112,7 +112,10 @@ RACKET_VELOCITY = 9
 
 # DIALOG
 DIALOG_GROUP = "dialogs"
-ENTER_TO_START = "LEFT: W/S          PRESS ENTER TO START          RIGHT: I/K"
+ENTER_TO_START = "LEFT: W/S          PRESS ENTER TO START          RIGHT: I/K \n\n \
+            First player to score 5 points wins \n \
+    Get the ball past your opponent to score!"
+WIN_INSTRUCTIONS = "First player to score 5 goals wins!"
 PREP_TO_LAUNCH = "PREPARING TO LAUNCH"
 WAS_GOOD_GAMEL = "RIGHT PLAYER WINS"
 WAS_GOOD_GAMER = "LEFT PLAYER WINS"
