@@ -22,9 +22,9 @@ class CollideBordersAction(Action):
             ball.bounce_x()
             self._audio_service.play_sound(bounce_sound)
             stats = cast.get_first_actor(STATS_GROUP2)
-            if stats.get_score() <= 5:
-                callback.on_next(TRY_AGAIN) 
+            if stats.get_score() < WINNING_POINTS - 1:
                 stats.add_points(1)
+                callback.on_next(TRY_AGAIN)   
             else:
                 callback.on_next(GAME_OVERL)
                 self._audio_service.play_sound(over_sound)
@@ -33,9 +33,9 @@ class CollideBordersAction(Action):
             ball.bounce_x()
             self._audio_service.play_sound(bounce_sound)
             stats = cast.get_first_actor(STATS_GROUP1)
-            if stats.get_score() <= 5:
-                callback.on_next(TRY_AGAIN) 
+            if stats.get_score() < WINNING_POINTS - 1:
                 stats.add_points(1)
+                callback.on_next(TRY_AGAIN) 
             else:
                 callback.on_next(GAME_OVERR)
                 self._audio_service.play_sound(over_sound)
