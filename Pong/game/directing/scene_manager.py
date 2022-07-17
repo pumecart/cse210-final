@@ -3,7 +3,6 @@ from constants import *
 from game.casting.animation import Animation
 from game.casting.ball import Ball
 from game.casting.body import Body
-# from game.casting.brick import Brick
 from game.casting.image import Image
 from game.casting.label import Label
 from game.casting.point import Point
@@ -13,13 +12,10 @@ from game.casting.stats_racket1 import Stats_Racket1
 from game.casting.stats_racket2 import Stats_Racket2
 from game.casting.text import Text 
 from game.scripting.change_scene_action import ChangeSceneAction
-# from game.scripting.check_over_action import CheckOverAction
 from game.scripting.collide_borders_action import CollideBordersAction
-# from game.scripting.collide_brick_action import CollideBrickAction
 from game.scripting.collide_racket_action import CollideRacketAction
 from game.scripting.control_racket_action import ControlRacketAction
 from game.scripting.draw_ball_action import DrawBallAction
-# from game.scripting.draw_bricks_action import DrawBricksAction
 from game.scripting.draw_dialog_action import DrawDialogAction
 from game.scripting.draw_hud_action import DrawHudAction
 from game.scripting.draw_racket_action import DrawRacketAction
@@ -47,13 +43,10 @@ class SceneManager:
     PHYSICS_SERVICE = RaylibPhysicsService()
     VIDEO_SERVICE = RaylibVideoService(GAME_NAME, SCREEN_WIDTH, SCREEN_HEIGHT)
 
-    # CHECK_OVER_ACTION = CheckOverAction()
     COLLIDE_BORDERS_ACTION = CollideBordersAction(PHYSICS_SERVICE, AUDIO_SERVICE)
-    # COLLIDE_BRICKS_ACTION = CollideBrickAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     COLLIDE_RACKET_ACTION = CollideRacketAction(PHYSICS_SERVICE, AUDIO_SERVICE)
     CONTROL_RACKET_ACTION = ControlRacketAction(KEYBOARD_SERVICE)
     DRAW_BALL_ACTION = DrawBallAction(VIDEO_SERVICE)
-    # DRAW_BRICKS_ACTION = DrawBricksAction(VIDEO_SERVICE)
     DRAW_DIALOG_ACTION = DrawDialogAction(VIDEO_SERVICE)
     DRAW_HUD_ACTION = DrawHudAction(VIDEO_SERVICE)
     DRAW_RACKET_ACTION= DrawRacketAction(VIDEO_SERVICE)
@@ -72,8 +65,8 @@ class SceneManager:
     def prepare_scene(self, scene, cast, script):
         if scene == NEW_GAME:
             self._prepare_new_game(cast, script)
-        elif scene == NEXT_LEVEL:
-            self._prepare_next_level(cast, script)
+        elif scene == START_GAME:
+            self._prepare_start_game(cast, script)
         elif scene == TRY_AGAIN:
             self._prepare_try_again(cast, script)
         elif scene == IN_PLAY:
@@ -90,12 +83,9 @@ class SceneManager:
     def _prepare_new_game(self, cast, script):
         self._add_stats_racket1(cast)
         self._add_stats_racket2(cast)
-        # self._add_level(cast)
-        # self._add_lives(cast)
         self._add_score_racket1(cast)
         self._add_score_racket2(cast)
         self._add_ball(cast)
-        # self._add_bricks(cast)
         self._add_racket_left(cast)
         self._add_racket_right(cast)
         self._add_dialog(cast, ENTER_TO_START)
@@ -103,14 +93,13 @@ class SceneManager:
         self._add_initialize_script(script)
         self._add_load_script(script)
         script.clear_actions(INPUT)
-        script.add_action(INPUT, ChangeSceneAction(self.KEYBOARD_SERVICE, NEXT_LEVEL))
+        script.add_action(INPUT, ChangeSceneAction(self.KEYBOARD_SERVICE, START_GAME))
         self._add_output_script(script)
         self._add_unload_script(script)
         self._add_release_script(script)
         
-    def _prepare_next_level(self, cast, script):
+    def _prepare_start_game(self, cast, script):
         self._add_ball(cast)
-        # self._add_bricks(cast)
         self._add_racket_left(cast)
         self._add_racket_right(cast)
         self._add_dialog(cast, PREP_TO_LAUNCH)
@@ -143,7 +132,6 @@ class SceneManager:
 
     def _prepare_game_overL(self, cast, script):
         self._add_ball(cast)
-        #self._left(cast)
         self._add_dialog(cast, WAS_GOOD_GAMEL)
 
         script.clear_actions(INPUT)
@@ -153,7 +141,6 @@ class SceneManager:
     
     def _prepare_game_overR(self, cast, script):
         self._add_ball(cast)
-        #self._left(cast)
         self._add_dialog(cast, WAS_GOOD_GAMER)
 
         script.clear_actions(INPUT)
@@ -191,7 +178,6 @@ class SceneManager:
     def _add_score_racket1(self, cast):
         cast.clear_actors(SCORE_GROUP1)
         text = Text(SCORE_FORMAT_RACKET1, FONT_FILE, FONT_SMALL, ALIGN_LEFT)
-        # position = Point(CENTER_X, HUD_MARGIN)
         position = Point(0 + HUD_MARGIN, HUD_MARGIN)
         label1 = Label(text, position)
         cast.add_actor(SCORE_GROUP1, label1)
